@@ -9,6 +9,8 @@ public class Student
   public string Name { get; set; }
   [Required(ErrorMessage = "The name space can't be empty!!")]
   public int PhoneNumber {get; set; }
+  public Course Course  { get; set; }
+
   public Major Major { get; set; }
   public List<CurrentTerm> JoinEntities { get; }
 }
