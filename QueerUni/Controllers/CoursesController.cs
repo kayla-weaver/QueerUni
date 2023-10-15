@@ -17,6 +17,7 @@ namespace QueerUni.Controllers
 
     public ActionResult Index()
     {
-      return View();
+      List<Course> model = _db.Courses.ToList();
+      return View(model);
     }  }
 }
