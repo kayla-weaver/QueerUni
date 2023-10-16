@@ -1,3 +1,5 @@
+
+
 .container {
   background-color: lavenderblush;
   opacity: .8;
@@ -33,7 +35,7 @@
   margin: auto;
   z-index: 1;
   text-align: center;
-
+  font-family: 'Galada', cursive;
 }
 
 h1 {
@@ -46,6 +48,7 @@ h1 {
   margin-top: 10%;
   margin-bottom: 25px;
   z-index: 1;
+  font-family: 'Galada', cursive;
 }
 
 /* Style for header break */
@@ -78,18 +81,25 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  background-image: url("/images/rainbow.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 0;
+  top: auto;
 }
 
 h2 {
   text-align: left;
   position: relative;
+  font-family: 'Galada', cursive;
 }
 
 h3 {
   text-align: left;
   font-weight: 600;
   position: relative;
+  font-family: 'Galada', cursive;
 }
 
 

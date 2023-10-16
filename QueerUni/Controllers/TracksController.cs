@@ -7,18 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace QueerUni.Controllers
 {
-  public class CoursesController : Controller
+  public class TracksController : Controller
   {
     private readonly QueerUniContext _db;
 
-    public CoursesController(QueerUniContext db)
+    public TracksController(QueerUniContext db)
     {
       _db = db;
     }
 
     public ActionResult Index()
     {
-      List<Course> model = _db.Courses.ToList();
+      List<Track> model = _db.Track
+                          .Include(model => model.TrackName)
+                          .ToList();
+
       return View(model);
     }
 
@@ -28,9 +31,9 @@ namespace QueerUni.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Course course)
+    public ActionResult Create(Track track)
     {
-      _db.Courses.Add(course);
+      _db.Tracks.Add(Track);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

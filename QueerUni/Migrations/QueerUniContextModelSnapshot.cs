@@ -19,21 +19,21 @@ namespace QueerUni.Migrations
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("QueerUni.Models.Course", b =>
+            modelBuilder.Entity("QueerUni.Models.track", b =>
                 {
-                    b.Property<int>("CourseId")
+                    b.Property<int>("trackId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CourseName")
+                    b.Property<string>("trackName")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("CourseNumber")
+                    b.Property<int>("trackNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("CourseId");
+                    b.HasKey("trackId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("tracks");
                 });
 
             modelBuilder.Entity("QueerUni.Models.CurrentTerm", b =>
@@ -42,7 +42,7 @@ namespace QueerUni.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("trackId")
                         .HasColumnType("int");
 
                     b.Property<int>("StudentId")
@@ -50,7 +50,7 @@ namespace QueerUni.Migrations
 
                     b.HasKey("CurrentTermId");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("trackId");
 
                     b.HasIndex("StudentId");
 
@@ -63,7 +63,7 @@ namespace QueerUni.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CourseId")
+                    b.Property<int?>("trackId")
                         .HasColumnType("int");
 
                     b.Property<int>("Major")
@@ -77,16 +77,16 @@ namespace QueerUni.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("trackId");
 
                     b.ToTable("Students");
                 });
 
             modelBuilder.Entity("QueerUni.Models.CurrentTerm", b =>
                 {
-                    b.HasOne("QueerUni.Models.Course", "Courses")
+                    b.HasOne("QueerUni.Models.track", "tracks")
                         .WithMany("JoinEntities")
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("trackId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -96,21 +96,21 @@ namespace QueerUni.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Courses");
+                    b.Navigation("tracks");
 
                     b.Navigation("Student");
                 });
 
             modelBuilder.Entity("QueerUni.Models.Student", b =>
                 {
-                    b.HasOne("QueerUni.Models.Course", "Course")
+                    b.HasOne("QueerUni.Models.track", "track")
                         .WithMany("Students")
-                        .HasForeignKey("CourseId");
+                        .HasForeignKey("trackId");
 
-                    b.Navigation("Course");
+                    b.Navigation("track");
                 });
 
-            modelBuilder.Entity("QueerUni.Models.Course", b =>
+            modelBuilder.Entity("QueerUni.Models.track", b =>
                 {
                     b.Navigation("JoinEntities");
 

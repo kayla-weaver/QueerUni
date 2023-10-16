@@ -13,18 +13,18 @@ namespace QueerUni.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Courses",
+                name: "tracks",
                 columns: table => new
                 {
-                    CourseId = table.Column<int>(type: "int", nullable: false)
+                    trackId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CourseName = table.Column<string>(type: "longtext", nullable: true)
+                    trackName = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CourseNumber = table.Column<int>(type: "int", nullable: false)
+                    trackNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Courses", x => x.CourseId);
+                    table.PrimaryKey("PK_tracks", x => x.trackId);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -37,17 +37,17 @@ namespace QueerUni.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: true),
+                    trackId = table.Column<int>(type: "int", nullable: true),
                     Major = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Students", x => x.StudentId);
                     table.ForeignKey(
-                        name: "FK_Students_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
-                        principalColumn: "CourseId");
+                        name: "FK_Students_tracks_trackId",
+                        column: x => x.trackId,
+                        principalTable: "tracks",
+                        principalColumn: "trackId");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -57,17 +57,17 @@ namespace QueerUni.Migrations
                 {
                     CurrentTermId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    trackId = table.Column<int>(type: "int", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CurrentTerm", x => x.CurrentTermId);
                     table.ForeignKey(
-                        name: "FK_CurrentTerm_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
-                        principalColumn: "CourseId",
+                        name: "FK_CurrentTerm_tracks_trackId",
+                        column: x => x.trackId,
+                        principalTable: "tracks",
+                        principalColumn: "trackId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CurrentTerm_Students_StudentId",
@@ -79,9 +79,9 @@ namespace QueerUni.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CurrentTerm_CourseId",
+                name: "IX_CurrentTerm_trackId",
                 table: "CurrentTerm",
-                column: "CourseId");
+                column: "trackId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CurrentTerm_StudentId",
@@ -89,9 +89,9 @@ namespace QueerUni.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_CourseId",
+                name: "IX_Students_trackId",
                 table: "Students",
-                column: "CourseId");
+                column: "trackId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -103,7 +103,7 @@ namespace QueerUni.Migrations
                 name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "tracks");
         }
     }
 }

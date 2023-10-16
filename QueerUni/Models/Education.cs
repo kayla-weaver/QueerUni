@@ -1,0 +1,12 @@
+// Track 1
+
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using System.ComponentModel.DataAnnotations;
+
+namespace QueerUni.Models
+{
+  public class Education {
+    
+  }
+}

@@ -1,0 +1,13 @@
+@using QueerUni.Models;
+@model track
+
+<h1>Chose a track</h1>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.trackName)
+  @Html.TextBoxFor(model => model.trackName)
+  @Html.LabelFor(model => model.trackNumber)
+  @Html.TextBoxFor(model => model.trackNumber)
+  <input type="submit" value="Add new track" />
+}
