@@ -16,8 +16,8 @@ namespace QueerUni.Controllers
     }
     public ActionResult Index()
     {
-      List<Student> model = _db.Students
-                            .Include(student => student.Track)
+      List<Student> model = _db.Student
+                            .Include(student => student.Tracks)
                             .ToList();
       return View(model);
     }

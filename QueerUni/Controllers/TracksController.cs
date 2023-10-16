@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using QueerUni.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
 
 namespace QueerUni.Controllers
 {
@@ -18,7 +18,7 @@ namespace QueerUni.Controllers
 
     public ActionResult Index()
     {
-      List<Track> model = _db.Track
+      List<Models.Track> model = _db.Track
                           .Include(model => model.TrackName)
                           .ToList();
 
@@ -31,9 +31,9 @@ namespace QueerUni.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Track track)
+    public ActionResult Create(QueerUni.Models.Track track)
     {
-      _db.Tracks.Add(Track);
+      _db.Track.Add(track);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

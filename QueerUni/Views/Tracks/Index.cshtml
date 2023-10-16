@@ -12,9 +12,9 @@
   <h3>NO trackS HAVE BEEN ADDED YET :(</h3>
 }
 <ul>
-  @foreach(track track in Model)
+  @foreach(Track track in Model)
   {
-    <li class="icon">@Html.ActionLink($"{track.trackName}", "Details", new { id = track.trackId})</li>
+    <li class="icon">@Html.ActionLink($"{track.TrackName}", "Details", new { id = track.TrackId})</li>
   }
 </ul>
 
