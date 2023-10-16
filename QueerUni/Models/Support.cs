@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QueerUni.Models
 {
-  public class Support {
-    
+  public class Support
+  {
+    public int SupportId { get; set; }
   }
 }
