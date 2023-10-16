@@ -1,13 +1,10 @@
-// Track 2
-
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using System.ComponentModel.DataAnnotations;
 
 namespace QueerUni.Models
 {
-  public class Creativity {
-    
+  public class Creativity
+  {
+    public int CreativityId { get; set; }
   }
 }
-
