@@ -8,11 +8,5 @@ namespace QueerUni.Controllers;
 
 public class SupportController : Controller
 {
-    [HttpGet("/")]
-
-    public IActionResult Index()
-    {
-        return View();
-    }
 
 }

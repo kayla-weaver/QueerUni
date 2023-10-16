@@ -6,11 +6,5 @@ namespace QueerUni.Controllers;
 
 public class CreativityController : Controller
 {
-    [HttpGet("/")]
-
-    public IActionResult Index()
-    {
-        return View();
-    }
-
+   
 }
