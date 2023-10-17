@@ -15,7 +15,7 @@ public class Student
 }
 
 public enum Track
-{Education = 1, 
-Creativity = 2,
-Support = 3
+{Track1 = 1, 
+Track2= 2,
+Track3 = 3
 }

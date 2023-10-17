@@ -7,13 +7,7 @@ public class Track
 {
   public int TrackId { get; set; }
   public int TrackNumber { get; set; }
-  public List<Student> Students { get; set; }
-
-  public TrackName TrackName {get; }
+  public string TrackName {get; set; }
+  public Student Student { get; set; }
 }
-}
-public enum TrackName
-{Education = 1, 
-Creativity = 2,
-Support = 3
 }

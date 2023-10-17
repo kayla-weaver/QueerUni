@@ -18,11 +18,9 @@ namespace QueerUni.Controllers
 
     public ActionResult Index()
     {
-      List<Models.Track> model = _db.Track
-                          .Include(model => model.TrackName)
-                          .ToList();
 
-      return View(model);
+
+    return View();
     }
 
     public ActionResult Create()
