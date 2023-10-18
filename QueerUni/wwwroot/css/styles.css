@@ -1,8 +1,8 @@
 
 
 .container {
-  background-color: lavenderblush;
-  opacity: .8;
+  background-color: rgb(251, 221, 231);
+  opacity: .9;
   width: 70%;
   min-height: fit-content;
   padding-top: 50px;
@@ -22,6 +22,7 @@
   padding-right: 8%;
   text-align: center;
   z-index: 1;
+  font-family: 'Gabarito', sans-serif;
 }
 
 .icon {
@@ -30,21 +31,18 @@
   background-color: lightpink;
   border-radius: 11%;
   width: fit-content;
-  height: 15px;
-  padding: 10px;
-  margin: auto;
-  z-index: 1;
-  text-align: center;
+  height: fit-content;
+  padding: 5px;
   font-family: 'Galada', cursive;
+  margin: auto;
+  margin-top: 10px;
 }
 
 h1 {
   text-align: center;
-  display: flex;
   font-size: 52px;
   position: relative;
   padding-left: 3rem;
-  float: inherit;
   margin-top: 10%;
   margin-bottom: 25px;
   z-index: 1;
@@ -90,9 +88,10 @@ body {
 }
 
 h2 {
-  text-align: left;
-  position: relative;
-  font-family: 'Galada', cursive;
+  text-align: center;
+  font-family: 'Gabarito', sans-serif;
+  padding-top: 10px;
+  font-weight: 400;
 }
 
 h3 {

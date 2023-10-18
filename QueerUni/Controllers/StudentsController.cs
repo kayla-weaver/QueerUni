@@ -14,12 +14,22 @@ namespace QueerUni.Controllers
     {
       _db = db;
     }
-    public ActionResult Index()
+
+    public IActionResult Register()
     {
-      List<Student> model = _db.Student
-                            .Include(student => student.Tracks)
-                            .ToList();
-      return View(model);
+        return View();
     }
+
+    [HttpPost]
+    public IActionResult Register(Student students)
+    {
+       if (students.Track1 == true || students.Track2 == true || students.Track3 == true)
+            {
+        _db.Student.Add(students);
+        _db.SaveChanges();
+            } 
+    
+    return RedirectToAction("Index");
+    } 
   }
 }

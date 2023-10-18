@@ -11,11 +11,16 @@ public class Student
   public string Email {get; set; }
 
   public Track Tracks { get; }
+
+  public bool Track1 { get; set; }
+  public bool Track2 { get; set; }
+  public bool Track3 { get; set; }
+
 }
 }
 
-public enum Track
-{Track1 = 1, 
-Track2= 2,
-Track3 = 3
-}
+// public enum Track
+// {Track1 = 1, 
+// Track2= 2,
+// Track3 = 3
+// }

@@ -1,0 +1,24 @@
+
+@model QueerUni.Models.Student
+
+
+<h1> We are so excited to get you registered and on your way to your new education :)</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email)
+    
+    @Html.CheckBoxFor(model => model.Track1)
+    @Html.Label("ischecked","Education",new {id="lblIsChecked"})
+    @Html.CheckBoxFor(model => model.Track2)
+    @Html.Label("ischecked","Support",new {id="lblIsChecked"})
+    @Html.CheckBoxFor(model => model.Track3)
+    @Html.Label("ischecked","Creativity",new {id="lblIsChecked"})
+
+    <input type="submit" value="submit" />
+
+}
