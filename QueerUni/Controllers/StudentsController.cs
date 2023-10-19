@@ -23,13 +23,19 @@ namespace QueerUni.Controllers
     [HttpPost]
     public IActionResult Register(Student students)
     {
-       if (students.Track1 == true || students.Track2 == true || students.Track3 == true)
+      if (students.Track1 == true || students.Track2 == true || students.Track3 == true)
             {
         _db.Student.Add(students);
         _db.SaveChanges();
             } 
+      _db.Student.Add(students);
+      _db.SaveChanges();
     
     return RedirectToAction("Index");
     } 
+    public IActionResult Index()
+    {
+        return View();
+    }
   }
 }

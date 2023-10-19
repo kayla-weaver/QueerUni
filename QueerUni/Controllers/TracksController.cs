@@ -35,6 +35,31 @@ namespace QueerUni.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+public IActionResult Track1Info()
+    {
+        return View();
+    }
+
+public IActionResult Track2Info()
+    {
+        return View();
+    }
+
+public IActionResult Track3Info()
+    {
+        return View();
+    }
+
+public IActionResult About()
+    {
+        return View();
+    }
+
+public IActionResult Contact()
+    {
+        return View();
+    }
+
 
   }
 }
