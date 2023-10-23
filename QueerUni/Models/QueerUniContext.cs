@@ -1,9 +1,10 @@
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace QueerUni.Models
 {
-  public class QueerUniContext : DbContext
+  public class QueerUniContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Track> Track { get; set; }
     public DbSet<Student> Student { get; set; }

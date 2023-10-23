@@ -28,8 +28,8 @@ namespace QueerUni.Controllers
         _db.Student.Add(students);
         _db.SaveChanges();
             } 
-      _db.Student.Add(students);
-      _db.SaveChanges();
+      // _db.Student.Add(students);
+      // _db.SaveChanges();
     
     return RedirectToAction("Index");
     } 

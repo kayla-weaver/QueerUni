@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QueerUni.Models;
 
@@ -10,9 +11,10 @@ using QueerUni.Models;
 namespace QueerUni.Migrations
 {
     [DbContext(typeof(QueerUniContext))]
-    partial class QueerUniContextModelSnapshot : ModelSnapshot
+    [Migration("20231022231623_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
