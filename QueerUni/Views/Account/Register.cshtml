@@ -1,6 +1,7 @@
 @{
  Layout = "_Layout";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @using QueerUni.ViewModels
 
@@ -19,11 +20,20 @@
  @Html.LabelFor(user => user.Email)
  @Html.TextBoxFor(user=> user.Email)
 
+ @Html.LabelFor(user => user.Name)
+ @Html.TextBoxFor(user=> user.Name)
+
  @Html.LabelFor(user=> user.Password)
  @Html.EditorFor(user=> user.Password)
 
  @Html.LabelFor(user=> user.ConfirmPassword)
  @Html.EditorFor(user=> user.ConfirmPassword)
+
+ <input asp-for="Track1" type="checkbox" /> <label asp-for="Track1">Track 1</label>
+<input asp-for="Track2" type="checkbox" /> <label asp-for="Track2">Track 2</label>
+<input asp-for="Track3" type="checkbox" /> <label asp-for="Track3">Track 3</label>
+
+
 
  <input type="submit" value="Register" />
 }

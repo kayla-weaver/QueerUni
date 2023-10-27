@@ -34,7 +34,25 @@ namespace QueerUni.Controllers
    {
      if (!ModelState.IsValid)
      {
-       return View(model);
+      var user = new ApplicationUser {UserName = model.Name, Email = model.Email};
+      var result = await _userManager.CreateAsync(user, model.Password);
+
+      if (result.Succeeded)
+      {
+        var student = new Student
+        {
+          Name = model.Name,
+          Email = model.Email,
+          Track1 = model.Track1,
+          Track2 = model.Track2,
+          Track3 = model.Track3,
+          User = user
+        };
+
+        _db.Students.Add(student);
+        await _db.SaveChangesAsync(); //adds student to database
+      }
+       return View(model); // returns Register view with RegisterViewModel
      }
      else
      {
@@ -80,5 +98,15 @@ namespace QueerUni.Controllers
        }
      }
    }
+   [HttpPost]
+   public async Task<ActionResult> LogOff()
+   {
+    await _signInManager.SignOutAsync();
+    return RedirectToAction("Index");
+   }
  }
 }
+
+
+
+

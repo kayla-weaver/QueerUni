@@ -1,9 +1,42 @@
-
+@using QueerUni.Models
+@model QueerUni.Models.StudentTracks
 
 <div class="container">
-<div class="puff-in-hor">
-<h1>Thank you for submitting:)</h1>
+    <div class="puff-in-hor">
+        <h1>Information for @Model.Name</h1>
+    </div>
 
+    @if (Model.Tracks.Count == 0)
+    {
+        <h3>You haven't chosen any tracks </h3>
+        <button type="button" class="btn btn--blue">
+            <span class="btn__txt">@Html.ActionLink("Register Here", "Register", "Students")</span>
+            <i class="btn__bg" aria-hidden="true"></i>
+            <i class="btn__bg" aria-hidden="true"></i>
+            <i class="btn__bg" aria-hidden="true"></i>
+            <i class="btn__bg" aria-hidden="true"></i>
+        </button>
+    }
+    else
+    {   <h2>Tracks for @Model.Name:</h2>
+        <ul>
+        @foreach (var track in Model.Tracks)
+        {     
+            <li>@track.TrackName</li>  
+        }
+        </ul>
 
+        <p>
+            @Html.ActionLink("Edit", "Edit", "Students", new { id = student.StudentId }, null)
+        </p>
+
+        <button type="button" class="btn btn--blue">
+            <span class="btn__txt">@Html.ActionLink("Home", "Index", "Home")</span>
+            <i class="btn__bg" aria-hidden="true"></i>
+            <i class="btn__bg" aria-hidden="true"></i>
+            <i class="btn__bg" aria-hidden="true"></i>
+            <i class="btn__bg" aria-hidden="true"></i>
+        </button>
+    }
 </div>
-<hr>
+

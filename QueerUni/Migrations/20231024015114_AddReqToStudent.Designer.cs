@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QueerUni.Models;
 
@@ -10,9 +11,10 @@ using QueerUni.Models;
 namespace QueerUni.Migrations
 {
     [DbContext(typeof(QueerUniContext))]
-    partial class QueerUniContextModelSnapshot : ModelSnapshot
+    [Migration("20231024015114_AddReqToStudent")]
+    partial class AddReqToStudent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,12 +236,7 @@ namespace QueerUni.Migrations
                     b.Property<bool>("Track3")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
-
                     b.HasKey("StudentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Student");
                 });
@@ -250,7 +247,7 @@ namespace QueerUni.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
+                    b.Property<int?>("StudentId")
                         .HasColumnType("int");
 
                     b.Property<string>("TrackName")
@@ -317,29 +314,13 @@ namespace QueerUni.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("QueerUni.Models.Student", b =>
-                {
-                    b.HasOne("QueerUni.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("QueerUni.Models.Track", b =>
                 {
                     b.HasOne("QueerUni.Models.Student", "Student")
-                        .WithMany("Tracks")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("StudentId");
 
                     b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("QueerUni.Models.Student", b =>
-                {
-                    b.Navigation("Tracks");
                 });
 #pragma warning restore 612, 618
         }

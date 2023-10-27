@@ -4,7 +4,7 @@
 <div class="container">
 <h1> We are so excited to get you registered and on your way to your new education :)</h1>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Register", "Students", FormMethod.Post))
 {
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)

@@ -29,9 +29,9 @@ namespace QueerUni.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(QueerUni.Models.Track track)
+    public ActionResult Create(Track track)
     {
-      _db.Track.Add(track);
+      _db.Tracks.Add(track);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
