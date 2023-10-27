@@ -46,15 +46,16 @@ namespace QueerUni.Controllers
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
 
       Student currentUserStudentData = _db.Students
-                          .Where(entry => entry.User.Id == currentUser.Id)
                           .Include(student => student.JoinEntities)
-                          .ThenInclude(join => join.Track);
+                          .ThenInclude(join => join.Track)
+                          .FirstOrDefault(student => student.User.Id == currentUser.Id);
+                          
 
         return View(currentUserStudentData);
     }
     public async Task<IActionResult> Edit(int id)
 {
-    var student = await _db.Students.Include(s => s.s).FirstOrDefaultAsync(s => s.StudentId == id);
+    var student = await _db.Students.Include(student => student.StudentId ).FirstOrDefaultAsync(student => student.StudentId == id);
     if (student == null)
     {
         return NotFound();

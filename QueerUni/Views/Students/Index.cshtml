@@ -1,12 +1,12 @@
 @using QueerUni.Models
-@model QueerUni.Models.StudentTracks
+@model QueerUni.Models.Student
 
 <div class="container">
     <div class="puff-in-hor">
         <h1>Information for @Model.Name</h1>
     </div>
 
-    @if (Model.Tracks.Count == 0)
+    @if (@Model.JoinEntities.Count == 0)
     {
         <h3>You haven't chosen any tracks </h3>
         <button type="button" class="btn btn--blue">
@@ -18,16 +18,17 @@
         </button>
     }
     else
-    {   <h2>Tracks for @Model.Name:</h2>
+    {   
+        <h2>The tracks you are registered for:</h2>
         <ul>
-        @foreach (var track in Model.Tracks)
-        {     
-            <li>@track.TrackName</li>  
+        @foreach(StudentTrack join in Model.JoinEntities)
+        {
+            <li>Track Name: @join.Track.TrackName</li>
+            <li>Track Number: @join.Track.TrackNumber</li>
         }
         </ul>
-
         <p>
-            @Html.ActionLink("Edit", "Edit", "Students", new { id = student.StudentId }, null)
+            @Html.ActionLink("Edit", "Edit", "Students", new { id = Model.StudentId }, null)
         </p>
 
         <button type="button" class="btn btn--blue">

@@ -12,10 +12,12 @@ public class Student
   public string Email {get; set; }
 
   public List<StudentTrack> JoinEntities { get; set; }
+  public Track Track{ get; set; }
 
   public bool Track1 { get; set; }
   public bool Track2 { get; set; }
   public bool Track3 { get; set; }
+  
   public ApplicationUser User { get; set; }
 }
 }
