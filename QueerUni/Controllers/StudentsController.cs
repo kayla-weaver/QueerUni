@@ -77,9 +77,21 @@ public async Task<IActionResult> Edit(Student student)
     return View(student);
 }
 
-public async Task<IActionResult> Details(Student student)
+public async Task<IActionResult> Details(int? id)
 {
-return View();
+  if (id == null)
+  {
+    return NotFound();
+  }
+  var student = await _db.Students
+                          .Include(s => s.JoinEntities)
+                          .ThenInclude(JoinEntities =>JoinEntities.Track)
+                          .FirstOrDefaultAsync(s => s.StudentId == id);
+if (student == null)
+{
+  return NotFound();
+}
+return View(student);
 }
   }
 }

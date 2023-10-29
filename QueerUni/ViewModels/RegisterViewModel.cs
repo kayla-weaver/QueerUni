@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System;
 using System.Collections;
+using QueerUni.Models;
+
 
 namespace QueerUni.ViewModels
 {
@@ -26,8 +28,10 @@ namespace QueerUni.ViewModels
    [Display(Name = "Confirm password")]
    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
    public string ConfirmPassword { get; set; }
-   public bool Track1 { get; set; }
-   public bool Track2 { get; set; }
-   public bool Track3 { get; set; }
+   public List<Track> Tracks { get; set; }
+
+  //  public bool Track1 { get; set; }
+  //  public bool Track2 { get; set; }
+  //  public bool Track3 { get; set; }
  }
 }

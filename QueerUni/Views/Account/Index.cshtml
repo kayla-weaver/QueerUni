@@ -3,7 +3,9 @@
 }
 
 @using QueerUni.ViewModels
+@using QueerUni.Models
 @model LoginViewModel
+
 
 <h2>Authentication with Identity</h2>
 <hr />
@@ -11,7 +13,13 @@
 {
  <p>You are logged in as: @User.Identity.Name!</p>
 
- @Html.ActionLink("Click here to view your Student Information!", "Details", "Students")
+@{
+    var studentIdClaim = User.Claims.FirstOrDefault(c => c.Type == "StudentId");
+    var studentIdValue = studentIdClaim?.Value;
+}
+@Html.ActionLink("Click here to view your Student Information!", "Details", "Students", new { id = studentIdValue }, null)
+
+
 
 <button type="button" class="btn btn--blue">
             <span class="btn__txt">@Html.ActionLink("Home", "Index", "Home")</span>

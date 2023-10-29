@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace QueerUni.Models;
 
 public class StudentTrack
@@ -11,5 +13,4 @@ public class StudentTrack
   public Track Track { get; set; }
 
   public int TrackId{ get; set; }
-
 }

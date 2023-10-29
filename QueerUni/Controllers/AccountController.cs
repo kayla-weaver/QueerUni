@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using QueerUni.Models;
 using System.Threading.Tasks;
 using QueerUni.ViewModels;
+using System.Linq;
+using System.Security.Claims;
+
 
 namespace QueerUni.Controllers
 {
@@ -43,9 +46,6 @@ namespace QueerUni.Controllers
         {
           Name = model.Name,
           Email = model.Email,
-          Track1 = model.Track1,
-          Track2 = model.Track2,
-          Track3 = model.Track3,
           User = user
         };
 
@@ -84,28 +84,57 @@ namespace QueerUni.Controllers
      {
        return View(model);
      }
-     else
-     {
-       Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
-       if (result.Succeeded)
-       {
-         return RedirectToAction("Index");
-       }
-       else
-       {
-         ModelState.AddModelError("", "There is something wrong with your email or username. Please try again.");
-         return View(model);
-       }
+
+     Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+
+      if (result.Succeeded)
+    {
+        // Get the logged-in user
+        var user = await _userManager.FindByEmailAsync(model.Email);
+
+        // Retrieve the associated student based on the user ID
+        var student = _db.Students.FirstOrDefault(s => s.User.Id == user.Id);
+
+        if (student != null)
+        {
+            // Add StudentId as a claim
+            var studentIdClaim = new Claim("StudentId", student.StudentId.ToString());
+            await _userManager.AddClaimAsync(user, studentIdClaim);
+        }
+
+        return RedirectToAction("Index");
+    }
+    else
+    {
+        ModelState.AddModelError("", "There is something wrong with your email or username. Please try again.");
+        return View(model);
+    }
+
      }
-   }
+   
    [HttpPost]
    public async Task<ActionResult> LogOff()
    {
     await _signInManager.SignOutAsync();
     return RedirectToAction("Index");
    }
- }
+   
 }
+}
+
+
+
+   //  Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+      //  if (result.Succeeded)
+      //  {
+      //    return RedirectToAction("Index");
+      //  }
+      //  else
+      //  {
+      //    ModelState.AddModelError("", "There is something wrong with your email or username. Please try again.");
+      //    return View(model);
+      //  }
+ 
 
 
 

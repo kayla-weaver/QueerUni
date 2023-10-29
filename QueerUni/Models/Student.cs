@@ -15,13 +15,6 @@ public class Student
   public ApplicationUser User { get; set; }
   public Track Track{ get; set; }
 }
-// []
-// public enum Track
-// {
-//   Track1 = 1,
-//   Track2 = 2,
-//   Track3 = 3
-// }
 
 
 }
