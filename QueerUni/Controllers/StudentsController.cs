@@ -75,6 +75,16 @@ public async Task<IActionResult> Edit(Student student)
     }
     return View(student);
 }
+
+public async ActionResult Details(int id)
+{
+  Student thisStudent = _db.Students
+                            .Include(student => student.Track)
+                            .Include(student => student.JoinEntities)
+                            .ThenInclude(join => join.Track)
+                            .FirstOrDefault(student => student.StudentId = id);
+                            return View(thisStudent);
+}
   }
 }
 

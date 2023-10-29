@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class="puff-in-hor">
-        <h1>Information for @User</h1>
+        <h1>Information for @Model.Name</h1>
     </div>
 
     @if (@Model.JoinEntities.Count == 0)
@@ -23,8 +23,8 @@
         <ul>
         @foreach(StudentTrack join in Model.JoinEntities)
         {
-            <li>Track Name: @join.Track.TrackName</li>
-            <li>Track Number: @join.Track.TrackNumber</li>
+            <li>Track Name: @join.Track</li>
+            <li>Track Number: @join.TrackId</li>
         }
         </ul>
         <p>
