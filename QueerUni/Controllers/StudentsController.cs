@@ -26,15 +26,16 @@ namespace QueerUni.Controllers
 
     public IActionResult Register()
     {
+      ViewBag.TrackList = new SelectList(_db.Tracks, "TrackId", "TrackName");
         return View();
     }
 
     [HttpPost]
-    public IActionResult Register(Student students)
+    public IActionResult Register(Student student)
     {
-      if (students.Track1 == true || students.Track2 == true || students.Track3 == true)
+      if (student.Track != null && student.Track.TrackName != default(TrackName))
             {
-        _db.Students.Add(students);
+        _db.Students.Add(student);
         _db.SaveChanges();
             } 
     
@@ -55,12 +56,12 @@ namespace QueerUni.Controllers
     }
     public async Task<IActionResult> Edit(int id)
 {
-    var student = await _db.Students.Include(student => student.StudentId ).FirstOrDefaultAsync(student => student.StudentId == id);
+    var student = await _db.Students.Include(student => student.JoinEntities).ThenInclude(join => join.Track).FirstOrDefaultAsync(student => student.StudentId == id);
     if (student == null)
     {
         return NotFound();
     }
-
+    ViewBag.TrackList = new SelectList(_db.Tracks, "TrackId", "TrackName");
     return View(student);
 }
 
@@ -76,14 +77,9 @@ public async Task<IActionResult> Edit(Student student)
     return View(student);
 }
 
-public async ActionResult Details(int id)
+public async Task<IActionResult> Details(Student student)
 {
-  Student thisStudent = _db.Students
-                            .Include(student => student.Track)
-                            .Include(student => student.JoinEntities)
-                            .ThenInclude(join => join.Track)
-                            .FirstOrDefault(student => student.StudentId = id);
-                            return View(thisStudent);
+return View();
 }
   }
 }

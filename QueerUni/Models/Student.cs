@@ -14,12 +14,14 @@ public class Student
   public List<StudentTrack> JoinEntities { get; set; }
   public ApplicationUser User { get; set; }
   public Track Track{ get; set; }
-
-  public bool Track1 { get; set; }
-  public bool Track2 { get; set; }
-  public bool Track3 { get; set; }
-
-  
-  
 }
+// []
+// public enum Track
+// {
+//   Track1 = 1,
+//   Track2 = 2,
+//   Track3 = 3
+// }
+
+
 }

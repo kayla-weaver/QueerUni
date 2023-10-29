@@ -23,8 +23,8 @@
         <ul>
         @foreach(StudentTrack join in Model.JoinEntities)
         {
-            <li>Track Name: @join.Track</li>
-            <li>Track Number: @join.TrackId</li>
+            <li>Track Name: @join.Track.TrackName</li>
+            <li>Track Number: @join.Track.TrackId</li>
         }
         </ul>
         <p>
